@@ -19,5 +19,9 @@ RUN rm -Rf /etc/cron.hourly
 COPY crontab /etc/crontab
 COPY logger.sh /bin/logger.sh
 
+# Add the run script
+ADD run.sh /opt/run.sh
+RUN chmod 700 /opt/run.sh
+
 # Default script
-CMD ["/usr/bin/supervisord"]
+CMD ["/opt/run.sh"]
